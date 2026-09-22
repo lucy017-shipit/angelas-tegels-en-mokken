@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tegel &amp; Mok — maak 'm zelf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,450;9..144,560;9..144,650&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span>Tegel &amp; Mok</div>
+    <nav class="links" aria-label="Hoofdnavigatie">
+      <a href="#producten">Producten</a>
+      <a href="#hoe-het-werkt">Hoe het werkt</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="openCartBtn" aria-haspopup="dialog">
+      Winkelwagen <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;">
+    <div class="hero-copy">
+      <span class="eyebrow">Handgemaakt, jouw ontwerp</span>
+      <h1>Van eigen foto of tekst<br>tot tegel op de muur.</h1>
+      <p class="lede">Kies een tegeltje of mok, upload een foto of typ je tekst, kies een kleur — en het wordt met de hand gemaakt en bij je bezorgd.</p>
+      <div class="hero-ctas">
+        <a href="#producten" class="btn-primary">Bekijk producten</a>
+        <a href="#hoe-het-werkt" class="btn-ghost">Hoe het werkt</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="hero-tile t1"></div>
+      <div class="hero-tile t2"></div>
+      <div class="hero-tile t3"></div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="hoe-het-werkt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Zo werkt het</h2>
+      <p>In drie stappen naar een tegeltje of mok met jouw naam, foto of tekst erop.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step"><span class="how-num">1</span><h3>Kies je product</h3><p>Een tegeltje voor aan de muur of een mok voor bij de koffie — jij kiest de vorm.</p></div>
+      <div class="how-step"><span class="how-num">2</span><h3>Maak 'm persoonlijk</h3><p>Upload een foto, typ een tekst en kies een kleur die past bij het moment.</p></div>
+      <div class="how-step"><span class="how-num">3</span><h3>Wij maken en versturen</h3><p>Elk stuk wordt met de hand gemaakt en met zorg naar je toe gestuurd.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="producten">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Onze producten</h2>
+      <p>Elk product kun je zelf personaliseren met een foto, tekst en kleur.</p>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="logo">Tegel &amp; Mok</div>
+      <p>Custom tegeltjes &amp; mokken, met de hand gemaakt.</p>
+      <p>hallo@tegelenmok.nl</p>
+    </div>
+    <div class="footer-links">
+      <a href="#producten">Producten</a>
+      <a href="#hoe-het-werkt">Hoe het werkt</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Personalisatie modal -->
+<div class="overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3 id="modalTitle">Personaliseer je tegeltje</h3>
+      </div>
+      <button class="close-btn" id="closeModalBtn" aria-label="Sluiten">✕</button>
+    </div>
+
+    <div class="modal-grid">
+      <div>
+        <div class="preview-box">
+          <div class="preview-shape" id="previewShape">
+            <div class="preview-text" id="previewText">Jouw tekst hier</div>
+          </div>
+        </div>
+        <div class="upload-row" style="margin-top:14px;">
+          <label class="upload-btn" for="photoInput">Foto uploaden</label>
+          <input type="file" id="photoInput" accept="image/*" class="sr-only">
+          <button class="remove-photo" id="removePhotoBtn" style="display:none;">Foto verwijderen</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="field">
+          <label for="customText">Tekst op je product</label>
+          <input type="text" id="customText" maxlength="28" placeholder="Bijv. Familie Jansen">
+        </div>
+        <div class="field">
+          <label>Kleur</label>
+          <div class="swatches" id="colorSwatches" role="radiogroup" aria-label="Kies een kleur"></div>
+        </div>
+        <div class="field">
+          <label>Aantal</label>
+          <div class="qty-row">
+            <button class="qty-btn" id="qtyMinus" aria-label="Minder">–</button>
+            <span id="qtyValue">1</span>
+            <button class="qty-btn" id="qtyPlus" aria-label="Meer">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <span class="modal-price" id="modalPrice">€0,00</span>
+      <button class="btn-primary" id="addToCartBtn">Toevoegen aan winkelwagen</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cart drawer -->
+<div class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Winkelwagen">
+  <div class="drawer-head">
+    <h3>Winkelwagen</h3>
+    <button class="close-btn" id="closeCartBtn" aria-label="Sluiten">✕</button>
+  </div>
+  <div class="drawer-items" id="cartItems">
+    <div class="empty-cart">Je winkelwagen is nog leeg.</div>
+  </div>
+  <div class="drawer-foot">
+    <div class="drawer-total"><span>Totaal</span><span id="cartTotal">€0,00</span></div>
+
+    <div id="cartActions">
+      <button class="btn-primary" style="width:100%;" id="toCheckoutBtn">Bestellen</button>
+    </div>
+
+    <div class="checkout-fields" id="checkoutFields">
+      <div class="field"><label for="custName">Naam</label><input type="text" id="custName" placeholder="Voor- en achternaam"></div>
+      <div class="field"><label for="custAddress">Adres</label><input type="text" id="custAddress" placeholder="Straat, huisnummer, postcode, plaats"></div>
+      <div class="field"><label for="custEmail">E-mailadres</label><input type="text" id="custEmail" placeholder="naam@voorbeeld.nl"></div>
+      <button class="btn-primary" style="width:100%;" id="placeOrderBtn">Bestelling versturen</button>
+    </div>
+
+    <div class="confirm-box" id="confirmBox">
+      <div class="confirm-icon" aria-hidden="true">✓</div>
+      <h3 style="font-size:1.1rem;">Bedankt voor je bestelling!</h3>
+      <p style="opacity:0.75; font-size:0.9rem;">We laten snel iets weten over levering.</p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
